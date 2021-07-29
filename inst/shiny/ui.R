@@ -54,7 +54,7 @@ if (is(dataSource, "environment")) {
 }
 
 header <-
-  shinydashboard::dashboardHeader(title = "Cohort Diagnostics")
+  shinydashboard::dashboardHeader(title = "LEGEND-T2DM Class Cohorts", titleWidth = 350)
 
 sidebarMenu <-
   shinydashboard::sidebarMenu(
@@ -311,8 +311,8 @@ sidebarMenu <-
 
 #Side bar code
 sidebar <-
-  shinydashboard::dashboardSidebar(sidebarMenu, 
-                                   width = NULL, 
+  shinydashboard::dashboardSidebar(sidebarMenu,
+                                   width = NULL,
                                    collapsed = FALSE
   )
 
@@ -339,7 +339,7 @@ bodyTabItems <- shinydashboard::tabItems(
                               style = "margin-top: 5px; margin-bottom: 5px;"
                             )
                           )
-                        ))),    
+                        ))),
       DT::dataTableOutput(outputId = "cohortDefinitionTable"),
       column(
         12,
@@ -416,7 +416,7 @@ bodyTabItems <- shinydashboard::tabItems(
                 input.conceptSetsType != 'Mapped' &
                 input.conceptSetsType != 'Json' &
                 input.conceptSetsType != 'Orphan concepts'",
-                tags$table(width = "100%", 
+                tags$table(width = "100%",
                            tags$tr(
                              tags$td(align = "right",
                                      shiny::downloadButton(
@@ -427,12 +427,12 @@ bodyTabItems <- shinydashboard::tabItems(
                                      )
                              )
                            )
-                ), 
+                ),
                 DT::dataTableOutput(outputId = "cohortDefinitionConceptSetsTable")
               ),
               shiny::conditionalPanel(
                 condition = "input.conceptSetsType == 'Resolved'",
-                tags$table(width = "100%", 
+                tags$table(width = "100%",
                            tags$tr(
                              tags$td(align = "right",
                                      shiny::downloadButton(
@@ -443,12 +443,12 @@ bodyTabItems <- shinydashboard::tabItems(
                                      )
                              )
                            )
-                ), 
+                ),
                 DT::dataTableOutput(outputId = "cohortDefinitionIncludedResolvedConceptsTable")
               ),
               shiny::conditionalPanel(
                 condition = "input.conceptSetsType == 'Mapped'",
-                tags$table(width = "100%", 
+                tags$table(width = "100%",
                            tags$tr(
                              tags$td(align = "right",
                                      shiny::downloadButton(
@@ -459,12 +459,12 @@ bodyTabItems <- shinydashboard::tabItems(
                                      )
                              )
                            )
-                ), 
+                ),
                 DT::dataTableOutput(outputId = "cohortDefinitionMappedConceptsTable")
               ),
               shiny::conditionalPanel(
                 condition = "input.conceptSetsType == 'Orphan concepts'",
-                tags$table(width = "100%", 
+                tags$table(width = "100%",
                            tags$tr(
                              tags$td(align = "right",
                                      shiny::downloadButton(
@@ -475,7 +475,7 @@ bodyTabItems <- shinydashboard::tabItems(
                                      )
                              )
                            )
-                ), 
+                ),
                 DT::dataTableOutput(outputId = "cohortDefinitionOrphanConceptTable")
               ),
               shiny::conditionalPanel(
@@ -515,11 +515,11 @@ bodyTabItems <- shinydashboard::tabItems(
     shiny::radioButtons(
       inputId = "cohortCountsTableColumnFilter",
       label = "Display",
-      choices = c("Both", "Subjects Only", "Records Only"), 
+      choices = c("Both", "Subjects Only", "Records Only"),
       selected = "Both",
       inline = TRUE
     ),
-    tags$table(width = "100%", 
+    tags$table(width = "100%",
                tags$tr(
                  tags$td(align = "right",
                          shiny::downloadButton(
@@ -661,7 +661,7 @@ bodyTabItems <- shinydashboard::tabItems(
           )
         ),
         tags$td(
-          tags$table(width = "100%", 
+          tags$table(width = "100%",
                      tags$tr(
                        tags$td(align = "right",
                                shiny::downloadButton(
@@ -672,7 +672,7 @@ bodyTabItems <- shinydashboard::tabItems(
                                )
                        )
                      )
-          ), 
+          ),
         )
       )),
       shiny::htmlOutput(outputId = "hoverInfoIr"),
@@ -694,7 +694,7 @@ bodyTabItems <- shinydashboard::tabItems(
       inline = TRUE
     ),
     shiny::conditionalPanel(condition = "input.timeDistributionType=='Table'",
-                            tags$table(width = "100%", 
+                            tags$table(width = "100%",
                                        tags$tr(
                                          tags$td(align = "right",
                                                  shiny::downloadButton(
@@ -739,7 +739,7 @@ bodyTabItems <- shinydashboard::tabItems(
         shiny::radioButtons(
           inputId = "includedConceptsTableColumnFilter",
           label = "",
-          choices = c("Both", "Subjects only", "Records only"), # 
+          choices = c("Both", "Subjects only", "Records only"), #
           selected = "Subjects only",
           inline = TRUE
         )
@@ -786,7 +786,7 @@ bodyTabItems <- shinydashboard::tabItems(
         )
       )
     ),
-    tags$table(width = "100%", 
+    tags$table(width = "100%",
                tags$tr(
                  tags$td(align = "right",
                          shiny::downloadButton(
@@ -881,14 +881,14 @@ bodyTabItems <- shinydashboard::tabItems(
           shiny::radioButtons(
             inputId = "indexEventBreakdownTableFilter",
             label = "Display",
-            choices = c("Both", "Records", "Persons"), 
+            choices = c("Both", "Records", "Persons"),
             selected = "Persons",
             inline = TRUE
           )
         )
       )
     ),
-    tags$table(width = "100%", 
+    tags$table(width = "100%",
                tags$tr(
                  tags$td(align = "right",
                          shiny::downloadButton(
@@ -1030,7 +1030,7 @@ bodyTabItems <- shinydashboard::tabItems(
                 )
         )
       )),
-    tags$table(width = "100%", 
+    tags$table(width = "100%",
                tags$tr(
                  tags$td(align = "right",
                          shiny::downloadButton(
@@ -1094,7 +1094,7 @@ bodyTabItems <- shinydashboard::tabItems(
         )
       )
     )),
-    tags$table(width = "100%", 
+    tags$table(width = "100%",
                tags$tr(
                  tags$td(align = "right",
                          shiny::downloadButton(
@@ -1137,7 +1137,7 @@ bodyTabItems <- shinydashboard::tabItems(
         )
       )
     ),
-    
+
     shiny::conditionalPanel(condition = "input.charCompareType == 'Raw table' | input.charCompareType=='Plot'",
                             tags$table(tags$tr(
                               tags$td(
@@ -1189,7 +1189,7 @@ bodyTabItems <- shinydashboard::tabItems(
                               )
                             ))),
     shiny::conditionalPanel(condition = "input.charCompareType=='Pretty table' | input.charCompareType=='Raw table'",
-                            tags$table(width = "100%", 
+                            tags$table(width = "100%",
                                        tags$tr(
                                          tags$td(align = "right",
                                                  shiny::downloadButton(
@@ -1299,7 +1299,7 @@ bodyTabItems <- shinydashboard::tabItems(
     shiny::conditionalPanel(
       condition = "input.temporalCharacterizationType=='Pretty table' |
                             input.temporalCharacterizationType=='Raw table'",
-      tags$table(width = "100%", 
+      tags$table(width = "100%",
                  tags$tr(
                    tags$td(align = "right",
                            shiny::downloadButton(
