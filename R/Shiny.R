@@ -15,6 +15,7 @@
 # limitations under the License.
 
 #' Launch the Cohort/Diagnostics Explorer Shiny app
+#' @param cohort  The set of cohorts to display; currently options are \code{class} and \code{outcome}
 #' @param connectionDetails An object of type \code{connectionDetails} as created using the
 #'                          \code{\link[DatabaseConnector]{createConnectionDetails}} function in the
 #'                          DatabaseConnector package, specifying how to connect to the server where
@@ -42,17 +43,26 @@
 #' Launches a Shiny app that allows the user to explore the evidence
 #'
 #' @export
-launchCohortExplorer <- function(dataFolder = "data",
-                                   dataFile = "PreMerged.RData",
-                                   connectionDetails = NULL,
-                                   resultsDatabaseSchema = NULL,
-                                   vocabularyDatabaseSchemas = resultsDatabaseSchema,
-                                   aboutText = NULL,
-                                   runOverNetwork = FALSE,
-                                   port = 80,
-                                   launch.browser = FALSE) {
+launchCohortExplorer <- function(cohorts = "class",
+                                 dataFolder = "data",
+                                 dataFile = "PreMerged.RData",
+                                 connectionDetails = NULL,
+                                 # resultsDatabaseSchema = NULL,
+                                 # vocabularyDatabaseSchemas = resultsDatabaseSchema,
+                                 aboutText = NULL,
+                                 runOverNetwork = FALSE,
+                                 port = 80,
+                                 launch.browser = FALSE) {
 
   appDir = system.file("shiny", package = "LegendT2dmCohortExplorer")
+
+  if (cohorts == "class") {
+    headerText <- "LEGEND-T2DM Class Cohorts"
+    resultsDatabaseSchema <- "legendt2dm_class_diagnostics"
+  } else if (cohorts == "outcome") {
+    headerText <- "LEGEND-T2DM Outcome Cohorts"
+    resultsDatabaseSchema <- "legendt2dm_outcome_diagnostics"
+  }
 
   if (!is.null(connectionDetails) &&
       connectionDetails$dbms != "postgresql") {
@@ -80,10 +90,11 @@ launchCohortExplorer <- function(dataFolder = "data",
   shinySettings <- list(
     connectionDetails = connectionDetails,
     resultsDatabaseSchema = resultsDatabaseSchema,
-    vocabularyDatabaseSchemas = vocabularyDatabaseSchemas,
+    vocabularyDatabaseSchemas = resultsDatabaseSchema,
     dataFolder = dataFolder,
     dataFile = dataFile,
-    aboutText = aboutText
+    aboutText = aboutText,
+    headerText = headerText
   )
   .GlobalEnv$shinySettings <- shinySettings
   on.exit(rm("shinySettings", envir = .GlobalEnv))
