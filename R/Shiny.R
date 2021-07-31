@@ -62,6 +62,8 @@ launchCohortExplorer <- function(cohorts = "class",
   } else if (cohorts == "outcome") {
     headerText <- "LEGEND-T2DM Outcome Cohorts"
     resultsDatabaseSchema <- "legendt2dm_outcome_diagnostics"
+  } else {
+    stop("Unknown cohorts")
   }
 
   if (!is.null(connectionDetails) &&
