@@ -62,6 +62,11 @@ launchCohortExplorer <- function(cohorts = "class",
   } else if (cohorts == "outcome") {
     headerText <- "LEGEND-T2DM Outcome Cohorts"
     resultsDatabaseSchema <- "legendt2dm_outcome_diagnostics"
+  } else if (cohorts %in% c("dpp4i","sglt2i")) {
+    headerText <- sprintf("LEGEND-T2DM %s Cohorts", toupper(cohorts))
+    resultsDatabaseSchema <- "legendt2dm_drug_diagnostics"
+  } else if (cohorts %in% c("glp1ra", "su")) {
+    stop("Cohorts not yet available")
   } else {
     stop("Unknown cohorts")
   }
