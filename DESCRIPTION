@@ -1,7 +1,7 @@
 Package: LegendT2dmCohortExplorer
 Type: Package
 Title: LEGEND-T2DM Cohort Explorer
-Version: 0.1.0
+Version: 0.2.0
 Author: Marc A. Suchard [aut, cre],
     Martijn J. Schuemie [aut]
 Maintainer: The package maintainer <yourself@somewhere.net>
@@ -33,4 +33,4 @@ Imports:
   stringr,
   SqlRender,
   tidyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1

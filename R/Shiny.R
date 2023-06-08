@@ -62,6 +62,13 @@ launchCohortExplorer <- function(cohorts = "class",
   } else if (cohorts == "outcome") {
     headerText <- "LEGEND-T2DM Outcome Cohorts"
     resultsDatabaseSchema <- "legendt2dm_outcome_diagnostics"
+  } else if (cohorts == "drug") {
+    headerText = "LEGEND-T2DM Drug Cohorts"
+    resultsDatabaseSchema <- "legendt2dm_drug_diagnostics"
+  } else if (cohorts %in% c("sglt2i","dpp4i","glp1ra", "su")) {
+    headerText = "LEGEND-T2DM Drug Cohorts"
+    resultsDatabaseSchema <- "legendt2dm_drug_diagnostics"
+    warning("All drug cohorts will be displayed. Consider using `cohorts = \"drug\"` instead.")
   } else {
     stop("Unknown cohorts")
   }
